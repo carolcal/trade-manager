@@ -2,11 +2,13 @@ import React, { useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { auth } from '../databases/firebase'
 import { signOut } from 'firebase/auth'
-import { Button, Header, ListItem, Icon } from '@rneui/themed';
+import { Button, Header, ListItem, Icon, Text } from '@rneui/themed';
 import { View } from 'react-native'
 
 const HeaderComponent = () => {
     const [menu, setMenu] = useState(false)
+
+    const [showBack, setShowBack] = useState(false)
 
 
     const toggleMenu = () => {
@@ -15,12 +17,20 @@ const HeaderComponent = () => {
 
     const goToAdmin = () => {
         setMenu(false)
+        setShowBack(true)
         navigation.replace("Admin")
     }
 
     const goToUser = () => {
         setMenu(false)
+        setShowBack(true)
         navigation.replace("User")
+    }
+
+    const goToUnits = () => {
+        setMenu(false)
+        setShowBack(false)
+        navigation.replace("Units")
     }
 
     const navigation = useNavigation()
@@ -34,7 +44,7 @@ const HeaderComponent = () => {
     return <Header
         elevated
         placement="left"
-        leftComponent={
+        rightComponent={
             <>
                 <Button onPress={toggleMenu}>
                     <Icon name='menu' />
@@ -55,6 +65,13 @@ const HeaderComponent = () => {
                 </View>}
             </>
 
+        }
+        leftComponent={
+            showBack &&
+            <Button onPress={goToUnits}>
+                <Icon name='arrow-left' />
+                <Text>Voltar</Text>
+            </Button>
         }
     />;
 };
