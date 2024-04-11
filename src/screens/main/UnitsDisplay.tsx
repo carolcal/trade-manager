@@ -7,7 +7,7 @@ import { database } from './../../databases'
 //import { readUnidades } from './src/databases/sync';
 import UnitModel from './../../databases/model/unitModel';
 
-import UnitForm from './../../components/admin/unitForm';
+import UnitForm from '../admin/unitForm';
 
 
 

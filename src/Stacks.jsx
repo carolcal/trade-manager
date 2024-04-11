@@ -5,6 +5,7 @@ import LogInScreen from './screens/auth/LogInScreen';
 import RegisterScreen from './screens/auth/RegisterScreen'
 import HomeScreen from './screens/main/HomeScreen';
 import { useTheme } from '@rneui/themed';
+import AdminScreen from './screens/admin/AdminScreen'
 
 
 const Stack = createNativeStackNavigator();

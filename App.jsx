@@ -48,7 +48,7 @@ function App() {
     return (
         <ThemeProvider theme={theme}>
             <Stacks />
-            <StatusBar style="dark"/>
+            <StatusBar />
         </ThemeProvider>
     );
 }
