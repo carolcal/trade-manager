@@ -69,7 +69,7 @@ const HeaderComponent = () => {
         leftComponent={
             showBack &&
             <Button onPress={goToUnits}>
-                <Icon name='arrow-left' />
+                <Icon name='chevron-left' />
                 <Text>Voltar</Text>
             </Button>
         }

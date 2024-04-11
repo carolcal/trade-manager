@@ -1,12 +1,11 @@
 import React from "react";
 import { Text } from '@rneui/themed';
 
-export default function UserScreen() {
-
+export default function AdminUnitsScreen() {
 
     return (
         <>
-        <Text>Usuário</Text>
+            <Text>AdminUnits</Text>
         </>
     )
 }
