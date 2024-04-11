@@ -1,9 +1,9 @@
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
-import { auth } from '../databases/firebase'
+import { auth } from '../../databases/firebase'
 import { signOut } from 'firebase/auth'
 import { useNavigation } from '@react-navigation/native'
-import { Input, Button, Header, Text } from '@rneui/themed';
+import { Button, Header, Text } from '@rneui/themed';
 
 const HomeScreen = () => {
 

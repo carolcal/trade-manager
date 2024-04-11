@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react'
-import { KeyboardAvoidingView, TextInput, StyleSheet, View, TouchableOpacity } from 'react-native'
-import { auth } from "../databases/firebase"
-import { signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth'
+import { KeyboardAvoidingView, Text, StyleSheet, View } from 'react-native'
+import { Input, Button, Header } from '@rneui/themed';
+import { auth } from "../../databases/firebase"
+import { createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth'
 import { useNavigation } from '@react-navigation/native'
-import { Header, Button, Text, Input } from '@rneui/themed';
 import { AntDesign } from '@expo/vector-icons';
 
 const LogInScreen = () => {
 
+    const [name, setName] = useState('')
+    const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [confirmpassword, setConfirmPassword] = useState('')
 
     const navigation = useNavigation()
 
@@ -22,20 +25,22 @@ const LogInScreen = () => {
         return unsubscribe;
     }, [])
 
-    const handleLogIn = () => {
-        signInWithEmailAndPassword(auth, email, password)
+    const handleSignUp = () => {
+        createUserWithEmailAndPassword(auth, email, password)
             .then(userCredentials => {
                 const user = userCredentials.user
-                console.log("Logged in with: " + user.email)
+                console.log(user)
+                console.log("Registred with: " + user.email)
             })
-            .catch(error => alert(error.message))
+            .catch(error => console.log(error))
+    }
+
+    const goToLogin = () => {
+        navigation.replace("Login")
     }
 
     const goToWelcome = () => {
         navigation.replace("Welcome")
-    }
-    const goToRegister = () => {
-        navigation.replace("Register")
     }
 
     return (
@@ -60,10 +65,10 @@ const LogInScreen = () => {
                         secureTextEntry
                     />
                 </View>
-                    <Button radius={"sm"} onPress={handleLogIn} title="Login" />
-                    <View style={[styles.flexboxColumn, styles.m2]}>
-                    <Text>Ainda não tem conta?</Text>
-                    <Button type="clear" title='Registre-se aqui' onPress={goToRegister} />
+                <Button radius={"sm"} onPress={handleSignUp} title="Criar Conta" />
+                <View style={[styles.flexboxColumn, styles.m2]}>
+                    <Text>Já tem conta?</Text>
+                    <Button type="clear" title='Entre aqui' onPress={goToLogin} />
                 </View>
             </KeyboardAvoidingView>
         </>
@@ -85,40 +90,4 @@ const styles = StyleSheet.create({
         flexDirection: 'row', // Alinha os itens lado a lado
         alignItems: 'center', // Centraliza os itens verticalmente
     },
-    /*input: {
-        backgroundColor: 'white',
-        paddingHorizontal: 15,
-        paddingVertical: 10,
-        borderRadius: 10,
-        marginTop: 5
-    },
-    buttonContainer: {
-        width: '60%',
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: 40,
-    },
-    button: {
-        backgroundColor: '#0782F9',
-        width: '100%',
-        padding: 15,
-        borderRadius: 10,
-        alignItems: 'center'
-    },
-    buttonOutline: {
-        backgroundColor: 'white',
-        marginTop: 5,
-        borderColor: '#0782F9',
-        borderWidth: 2
-    },
-    buttonText: {
-        color: 'white',
-        fontWeight: '700',
-        fontSize: 16
-    },
-    buttonOutlineText: {
-        color: '#0782F9',
-        fontWeight: '700',
-        fontSize: 16
-    } */
 })

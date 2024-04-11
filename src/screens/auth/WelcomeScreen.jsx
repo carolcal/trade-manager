@@ -2,7 +2,7 @@ import * as React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Text, Button } from '@rneui/themed';
 import { useNavigation } from '@react-navigation/native'
-import Container from '../components/Container';
+import Container from '../../components/Container';
 
 
 function WelcomeScreen() {
