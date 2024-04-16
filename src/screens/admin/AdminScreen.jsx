@@ -40,12 +40,19 @@ export default function AdminScreen() {
         navigation.replace(route)
     }
 
+    /* const state = navigation.dangerouslyGetState();
+    let actualRoute = state.routes[state.index];
+
+    while (actualRoute.state) {
+        actualRoute = actualRoute.state.routes[actualRoute.state.index];
+    } */
+
     const ItemsAdminList = itemsAdmin.map((item, index) => {
         return (
-            <ListItem 
-            key={index}
-            topDivider={index === 0 ? false : true} 
-            onPress={() => goToPressed(item.route)}>
+            <ListItem
+                key={index}
+                topDivider={index === 0 ? false : true}
+                onPress={() => goToPressed(item.route)}>
                 <Icon name={item.icon} />
                 <ListItem.Title>{item.title}</ListItem.Title>
             </ListItem>
@@ -54,12 +61,12 @@ export default function AdminScreen() {
 
     return (
         <>
-        <Container>
-            <View style={{ alignItems: 'left' }}>
-                {ItemsAdminList}
-            </View>
-
-        </Container>
+            <Container>
+                <View style={{ alignItems: 'left' }}>
+                    {ItemsAdminList}
+                </View>
+               {/*  <Text>{actualRoute}</Text> */}
+            </Container>
         </>
     )
 }
