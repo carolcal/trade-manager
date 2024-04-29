@@ -8,7 +8,6 @@ import { getAuth } from "firebase/auth";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-    apiKey: "AIzaSyCIw3ojZFiFtilho1UIXOHLe4TVrlWZP4M",
     authDomain: "trade-manager-91a41.firebaseapp.com",
     projectId: "trade-manager-91a41",
     storageBucket: "trade-manager-91a41.appspot.com",
